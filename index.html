@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta — UMA · Violeta Cerviño</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #1E1A22; --surface: #28222E; --card: #312A38;
+    --white: #F0EDF5; --mid: #8A8098; --line: #3A3244;
+    --teal: #2A8C7A; --violet: #A3306B;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+  body { background: var(--bg); color: var(--white); font-family: var(--sans); font-weight: 300; font-size: 15px; line-height: 1.75; }
+  .cover { background: #15111A; padding: 48px 48px 44px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .cover-name { font-family: var(--serif); font-size: 40px; font-style: italic; font-weight: 400; color: var(--white); line-height: 1.05; display: block; margin-bottom: 10px; }
+  .cover-name span { color: var(--teal); }
+  .cover-tag { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); font-weight: 500; }
+  .cover-right { font-size: 12px; color: var(--mid); }
+  .grad { height: 3px; background: linear-gradient(90deg, var(--violet), var(--teal)); }
+  .page { max-width: 760px; margin: 0 auto; padding: 52px 48px 64px; }
+  .eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mid); font-weight: 500; margin-bottom: 14px; display: block; }
+  .heading-xl { font-family: var(--serif); font-size: 32px; font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 20px; color: var(--white); }
+  .heading-xl em { font-style: italic; color: var(--violet); }
+  .heading-lg { font-family: var(--serif); font-size: 20px; font-weight: 400; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 16px; color: var(--white); }
+  .heading-lg em { font-style: italic; color: var(--teal); }
+  .body-text { font-size: 14px; line-height: 1.8; color: #B0A8BC; margin-bottom: 12px; max-width: 600px; }
+  .reels-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 8px; }
+  .reel-col { display: flex; flex-direction: column; gap: 8px; }
+  .reel-meta { display: flex; flex-direction: column; gap: 2px; }
+  .reel-account { font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--teal); text-decoration: none; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .reel-account:hover { color: #3DBDA8; }
+  .reel-role { font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); font-weight: 500; display: block; line-height: 1.4; }
+  .reel-slot { position: relative; width: 100%; aspect-ratio: 9 / 16; background: var(--card); border: 1.5px dashed var(--violet); border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .reel-slot video, .reel-slot iframe { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 5px; border: none; }
+  .slot-empty { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 100%; padding: 0 8px; }
+  .slot-icon { font-size: 16px; color: var(--violet); line-height: 1; }
+  .slot-hint { font-size: 9px; color: var(--mid); font-weight: 500; letter-spacing: 0.04em; text-align: center; }
+  .url-form { display: flex; gap: 4px; width: 100%; }
+  .url-form input { flex: 1; font-size: 9px; padding: 4px 6px; border: 1px solid var(--violet); border-radius: 3px; background: var(--surface); color: var(--white); outline: none; font-family: var(--sans); min-width: 0; }
+  .url-form button { font-size: 9px; padding: 4px 7px; background: var(--violet); color: var(--white); border: none; border-radius: 3px; cursor: pointer; font-family: var(--sans); font-weight: 500; }
+  .uma-eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mid); font-weight: 500; margin-bottom: 10px; display: block; }
+  .uma-title { font-family: var(--serif); font-size: 28px; font-weight: 400; line-height: 1.2; color: var(--white); margin-bottom: 6px; }
+  .uma-title em { font-style: italic; color: var(--teal); }
+  .uma-subtitle { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--violet); margin-bottom: 10px; display: block; }
+  .uma-intro { font-size: 13.5px; color: #9088A0; line-height: 1.7; max-width: 580px; margin-bottom: 36px; }
+  .process { border: 1px solid var(--line); margin-bottom: 20px; }
+  .process-row { display: grid; grid-template-columns: 40px 1fr; border-bottom: 1px solid var(--line); }
+  .process-row:last-child { border-bottom: none; }
+  .process-num { background: #15111A; display: flex; align-items: flex-start; justify-content: center; padding-top: 15px; font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--teal); }
+  .process-body { padding: 14px 18px; background: var(--surface); }
+  .process-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 3px; }
+  .process-desc { font-size: 12.5px; color: var(--mid); line-height: 1.5; }
+  .collab-note { font-size: 13px; color: var(--mid); line-height: 1.6; padding-top: 4px; }
+  .footer { background: #15111A; padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); }
+  .footer-name { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--mid); }
+  .footer-sig { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--teal); text-align: right; max-width: 380px; line-height: 1.4; }
+</style>
+</head>
+<body>
+
+  <div class="cover">
+    <div>
+      <span class="cover-name">Violeta <span>Cerviño</span></span>
+      <span class="cover-tag">Marketing Strategist</span>
+    </div>
+    <div class="cover-right"></div>
+  </div>
+
+  <div class="grad"></div>
+
+  <div class="page">
+    <span class="eyebrow">Sobre mí</span>
+    <h1 class="heading-xl">Marketing estratégico<br>con mentalidad <em>emprendedora</em>.</h1>
+    <p class="body-text">Tengo diez años de experiencia en marketing digital, tanto en proyectos propios como colaborando con los sueños de otros. Hoy soy estratega en Springrose, una startup de indumentaria adaptativa, y acompaño a Pola Carranza, Vocal Coach en Valencia, en el desarrollo de su estrategia de marketing.</p>
+
+    <div style="height: 3em;"></div>
+
+    <span class="eyebrow">Experiencia</span>
+    <h2 class="heading-lg">Algunos proyectos<br>con los que <em>trabajé</em>.</h2>
+    <div class="reels-row">
+
+      <div class="reel-col">
+        <div class="reel-meta">
+          <a class="reel-account" href="https://www.instagram.com/springrose.co" target="_blank">@springrose.co</a>
+          <span class="reel-role">Estratega de Marketing · 2024</span>
+        </div>
+        <div class="reel-slot" id="reel-spring">
+          <div class="slot-empty" id="empty-reel-spring">
+            <div class="slot-icon">▷</div>
+            <div class="slot-hint">Video reel</div>
+            <div class="url-form">
+              <input type="text" id="url-reel-spring" placeholder="Link...">
+              <button onclick="embedVideo('reel-spring')">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-col">
+        <div class="reel-meta">
+          <a class="reel-account" href="https://www.instagram.com/polacarranzavocalstudio" target="_blank">@polacarranzavocalstudio</a>
+          <span class="reel-role">Asesoría Marketing · 2025</span>
+        </div>
+        <div class="reel-slot" id="reel-pola">
+          <div class="slot-empty" id="empty-reel-pola">
+            <div class="slot-icon">▷</div>
+            <div class="slot-hint">Video reel</div>
+            <div class="url-form">
+              <input type="text" id="url-reel-pola" placeholder="Link...">
+              <button onclick="embedVideo('reel-pola')">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-col">
+        <div class="reel-meta">
+          <a class="reel-account" href="https://www.instagram.com/bonnenuit.bn" target="_blank">@bonnenuit.bn</a>
+          <span class="reel-role">E-commerce · Contenido · 2023</span>
+        </div>
+        <div class="reel-slot" id="reel-bonne">
+          <div class="slot-empty" id="empty-reel-bonne">
+            <div class="slot-icon">▷</div>
+            <div class="slot-hint">Video reel</div>
+            <div class="url-form">
+              <input type="text" id="url-reel-bonne" placeholder="Link...">
+              <button onclick="embedVideo('reel-bonne')">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reel-col">
+        <div class="reel-meta">
+          <a class="reel-account" href="https://www.instagram.com/nohi.tienda" target="_blank">@nohi.tienda</a>
+          <span class="reel-role">Co-fundadora · 2018</span>
+        </div>
+        <div class="reel-slot" id="reel-nohi">
+          <div class="slot-empty" id="empty-reel-nohi">
+            <div class="slot-icon">▷</div>
+            <div class="slot-hint">Video reel</div>
+            <div class="url-form">
+              <input type="text" id="url-reel-nohi" placeholder="Link...">
+              <button onclick="embedVideo('reel-nohi')">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="grad"></div>
+
+  <div class="page">
+    <h2 class="uma-title">Una propuesta para<br><em>un montón de artistas</em>.</h2>
+
+    <div style="height: 3em;"></div>
+
+    <span class="uma-subtitle">Cómo arrancaríamos juntos.</span>
+
+    <h2 class="heading-lg" style="margin-bottom: 12px;">Un proceso que empieza<br>mucho antes del <em>contenido</em>.</h2>
+    <p class="body-text" style="margin-bottom: 24px;">Cada pieza que sale tiene detrás un proceso de estrategia, planificación y coordinación. Esto es lo que haría con UMA.</p>
+
+    <div class="process">
+      <div class="process-row">
+        <div class="process-num">1</div>
+        <div class="process-body">
+          <p class="process-title">Poner en común los objetivos y la dirección de UMA</p>
+          <p class="process-desc">Qué quiere conseguir la academia, qué está comunicando hoy y hacia dónde quiere ir. De ahí construimos todo lo demás.</p>
+        </div>
+      </div>
+      <div class="process-row">
+        <div class="process-num">2</div>
+        <div class="process-body">
+          <p class="process-title">Revisión del material existente y análisis de mercado</p>
+          <p class="process-desc">Qué tiene UMA, qué está haciendo la competencia, qué oportunidades existen ahora.</p>
+        </div>
+      </div>
+      <div class="process-row">
+        <div class="process-num">3</div>
+        <div class="process-body">
+          <p class="process-title">Planificación en tres niveles</p>
+          <p class="process-desc">Macro (visión anual), medio (campaña o temporada) y micro (semana a semana): con desglose de qué se necesita, qué ya existe y qué anticipación requiere cada pieza.</p>
+        </div>
+      </div>
+      <div class="process-row">
+        <div class="process-num">4</div>
+        <div class="process-body">
+          <p class="process-title">Calendario de deliverables y recursos</p>
+          <p class="process-desc">Qué sale cuándo, quién lo produce, qué hace falta para llegar. Ajustado a los plazos y al equipo real de UMA.</p>
+        </div>
+      </div>
+      <div class="process-row">
+        <div class="process-num">5</div>
+        <div class="process-body">
+          <p class="process-title">Producción y realización del contenido</p>
+          <p class="process-desc">Desde la idea hasta la pieza lista para publicar. Para diseño gráfico y edición de vídeo trabajo en conjunto con diseñadores y editores según lo que necesite cada proyecto.</p>
+        </div>
+      </div>
+      <div class="process-row">
+        <div class="process-num">+</div>
+        <div class="process-body">
+          <p class="process-title">Revisión continua</p>
+          <p class="process-desc">Reuniones regulares para revisar plazos, analizar resultados y ajustar si aparecen oportunidades, dificultades o cambios.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--white); line-height: 1.6; margin-top: 40px;">Disfruto de corazón lo que crean en UMA y me entusiasmaría mucho <em style="color: var(--violet);">ser parte del elenco</em>.</p>
+
+  </div>
+
+  <div class="grad"></div>
+
+  <div class="footer">
+    <span class="footer-name">Violeta Cerviño</span>
+  </div>
+
+<script>
+function embedVideo(slotId) {
+  const input = document.getElementById('url-' + slotId);
+  let url = input.value.trim();
+  if (!url) return;
+  const slot = document.getElementById(slotId);
+  const empty = document.getElementById('empty-' + slotId);
+
+  // Any iframe-based embed: Cloudinary player, Google Drive, or any other URL
+  const iframe = document.createElement('iframe');
+  iframe.src = url;
+  iframe.allow = 'autoplay; fullscreen';
+  iframe.allowFullscreen = true;
+  iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:5px;';
+  empty.style.display = 'none';
+  slot.appendChild(iframe);
+}
+</script>
+</body>
+</html>
